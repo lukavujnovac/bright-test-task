@@ -11,7 +11,7 @@ import SwiftUI
 struct bright_widget_appApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(viewModel: HomeViewModel())
         }
     }
 }
