@@ -32,15 +32,6 @@ struct LineChartView: View {
                     }
                     
                     if let dataX = point.dataX, dataX == activePoints.last?.dataX {
-                        RectangleMark(
-                            x: .value("Time", dataX),
-                            y: .value("Value", point.dataY),
-                            width: .fixed(Constants.rectangleWidth),
-                            height: .fixed(Constants.chartHeight)
-                        )
-                        .foregroundStyle(Color.primaryText)
-                        .cornerRadius(.full)
-                        
                         PointMark(
                             x: .value("Time", dataX),
                             y: .value("Value", point.dataY)
@@ -69,6 +60,18 @@ struct LineChartView: View {
                             .foregroundStyle(Color.activityOrange)
                         }
                     }
+                }
+                
+                if let point = activePoints.last, let dataX = point.dataX {
+                    RectangleMark(
+                        x: .value("Time", dataX),
+                        y: .value("Value", point.dataY),
+                        width: .fixed(Constants.rectangleWidth),
+                        height: .fixed(Constants.chartHeight)
+                    )
+                    .foregroundStyle(Color.primaryText)
+                    .cornerRadius(.full)
+                    .offset(y: 20)
                 }
             }
             .frame(height: Constants.chartHeight, alignment: .bottomLeading)
